@@ -76,12 +76,12 @@ To run tests, you can use the phpunit command:
 
 
 ## Server Configuration
-This application is configured to use MySQL as its database, SMTP for mail, Eloquent as its ORM, JWT for authentication, and Laravel Queue for job processing. The configuration for these services can be found in the config directory:
 
-database.php: Database configuration.
-mail.php: Mail configuration.
-jwt.php: JWT configuration.
-queue.php: Queue configuration.
+This application is configured to use MySQL as its database, SMTP for mail, Eloquent as its ORM, JWT for authentication, and Laravel Queue for job processing. The configuration for these services can be found in the `config` directory:
 
+- `database.php`: Database configuration.
+- `mail.php`: Mail configuration.
+- `jwt.php`: JWT configuration.
+- `queue.php`: Queue configuration.
 
 
