@@ -52,6 +52,26 @@ The following routes are grouped under the `auth:api` middleware, which means th
 - `GET /loans, POST /loans, GET /loans/{loan}`: These routes are for managing loans. The update and destroy actions are not available. They are handled by the `LoanController` class.
 - `GET /students, POST /students, GET /students/{student}, PUT /students/{student}, DELETE /students/{student}`: These routes are for managing students. They are handled by the `StudentController` class.
 
+## Email Notifications with Laravel Queue
+
+In this application, we use Laravel's built-in queue system to handle email notifications. This allows us to perform a time-consuming task, like sending an email, in the background to improve the application's performance.
+
+One of the instances where we use this feature is when a new user registers. We send a welcome email to the new user and a notification email to the admin to inform them about the new registration.
+
+Here's a brief overview of how it works:
+
+1. When a new user registers, we dispatch a job to the Laravel queue.
+2. This job is responsible for sending an email notification. We use Laravel's Mailable class to construct the email.
+3. The queue worker picks up the job from the queue and processes it in the background. This involves sending the email using the configured mail driver.
+4. If the email is sent successfully, the job is removed from the queue. If not, the job is retried based on the configured number of attempts.
+
+This project is hosted on a server that uses Cron for scheduling tasks. We use Cron to ensure that the Laravel queue worker is always running, even after a failure or server reboot. This is crucial for the email notifications to be sent out in a timely manner.
+
+Remember to start the queue worker so that it can start processing jobs. You can start the queue worker using the `queue:work` artisan command:
+
+```bash
+php artisan queue:work
+
 ## Factories
 
 Factories are located in the `database/factories` directory. They are used to generate large amounts of database records. Here is the factory in your project:
