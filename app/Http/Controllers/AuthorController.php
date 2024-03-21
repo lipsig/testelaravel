@@ -14,10 +14,16 @@ class AuthorController extends Controller
 
     public function store(Request $request)
     {
+        $messages = [
+            'name.required' => 'The name field is required.',
+            'date_of_birth.required' => 'The date of birth field is required.',
+            'date_of_birth.date' => 'The date of birth is not a valid date.',
+        ];
+
         $request->validate([
             'name' => 'required',
             'date_of_birth' => 'required|date',
-        ]);
+        ], $messages);
 
         return Author::create($request->all());
     }
@@ -29,20 +35,19 @@ class AuthorController extends Controller
 
     public function update(Request $request, Author $author)
     {
+        $messages = [
+            'name.required' => 'The name field is required.',
+            'date_of_birth.required' => 'The date of birth field is required.',
+            'date_of_birth.date' => 'The date of birth is not a valid date.',
+        ];
+
         $request->validate([
             'name' => 'required',
             'date_of_birth' => 'required|date',
-        ]);
+        ], $messages);
 
         $author->update($request->all());
 
         return $author;
-    }
-
-    public function destroy(Author $author)
-    {
-        $author->delete();
-
-        return response()->json(null, 204);
     }
 }
