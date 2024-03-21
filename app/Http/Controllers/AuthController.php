@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail; 
+use App\Mail\RegistrationSuccessEmail; 
 
 class AuthController extends Controller
 {
@@ -36,6 +38,8 @@ class AuthController extends Controller
         $validatedData['password'] = Hash::make($request->password);
 
         $user = User::create($validatedData);
+
+        Mail::to($user->email)->queue(new RegistrationSuccessEmail($user));
 
         $token = Auth::attempt($request->only('email', 'password'));
 
