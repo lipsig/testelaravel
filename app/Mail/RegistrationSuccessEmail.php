@@ -19,7 +19,7 @@ class RegistrationSuccessEmail extends Mailable
 
     public function build()
     {
-        return $this->view('emails.registration_success')
+        return $this->view('registration_success')
                     ->with([
                         'name' => $this->user->name,
                     ]);
