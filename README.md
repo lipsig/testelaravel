@@ -69,7 +69,7 @@ This project is hosted on a server that uses Cron for scheduling tasks. We use C
 
 Remember to start the queue worker so that it can start processing jobs. You can start the queue worker using the `queue:work` artisan command:
 
-```bash
+```bash```
 php artisan queue:work
 
 ## Factories
