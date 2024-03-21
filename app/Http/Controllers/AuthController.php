@@ -11,12 +11,28 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $validatedData = $request->validate([
+        $rules = [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
-        ]);
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/',
+        ];
 
+        $messages = [
+            'name.required' => 'The name field is required.',
+            'email.required' => 'The email field is required.',
+            'email.email' => 'The email must be a valid email address.',
+            'email.unique' => 'The email has already been taken.',
+            'password.required' => 'The password field is required.',
+            'password.regex' => 'The password must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $validatedData = $validator->validated();
         $validatedData['password'] = Hash::make($request->password);
 
         $user = User::create($validatedData);
@@ -31,12 +47,29 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $rules = [
+            'email' => 'required|email',
+            'password' => 'required',
+        ];
+
+        $messages = [
+            'email.required' => 'The email field is required.',
+            'email.email' => 'The email must be a valid email address.',
+            'password.required' => 'The password field is required.',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
         if (! $token = Auth::attempt($request->only('email', 'password'))) {
             return response()->json(['error' => 'Invalid credentials'], 401);
         }
 
         return response()->json([
             'token' => $token,
-        ]);
+        ], 200);
     }
 }
