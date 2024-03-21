@@ -8,13 +8,7 @@ use App\Http\Controllers\AuthController;
 
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('authors', AuthorController::class);
-});
-
-Route::middleware('auth:api')->group(function () {
     Route::apiResource('books', BookController::class);
-});
-
-Route::middleware('auth:api')->group(function () {
     Route::apiResource('loans', LoanController::class)->except(['update', 'destroy']);
 });
 
