@@ -9,14 +9,14 @@ class LoanController extends Controller
 {
     public function index()
     {
-        return Loan::with(['user', 'book'])->get();
+        return Loan::with(['student', 'book'])->get();
     }
 
     public function store(Request $request)
     {
         $messages = [
-            'user_id.required' => 'The user ID field is required.',
-            'user_id.exists' => 'The selected user ID is invalid.',
+            'student_id.required' => 'The student ID field is required.',
+            'student_id.exists' => 'The selected student ID is invalid.',
             'book_id.required' => 'The book ID field is required.',
             'book_id.exists' => 'The selected book ID is invalid.',
             'loan_date.required' => 'The loan date field is required.',
@@ -27,7 +27,7 @@ class LoanController extends Controller
         ];
 
         $request->validate([
-            'user_id' => 'required|exists:users,id',
+            'student_id' => 'required|exists:students,id',
             'book_id' => 'required|exists:books,id',
             'loan_date' => 'required|date',
             'return_date' => 'required|date|after_or_equal:loan_date',
@@ -38,6 +38,6 @@ class LoanController extends Controller
 
     public function show(Loan $loan)
     {
-        return $loan->load(['user', 'book']);
+        return $loan->load(['student', 'book']);
     }
 }
