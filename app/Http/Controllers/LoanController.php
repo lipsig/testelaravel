@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Loan;
+use Illuminate\Support\Facades\Mail; 
 use Illuminate\Http\Request;
+use App\Mail\LoanCreated;
+use App\Models\Loan;
+
+
 
 class LoanController extends Controller
 {
@@ -33,7 +36,11 @@ class LoanController extends Controller
             'return_date' => 'required|date|after_or_equal:loan_date',
         ], $messages);
 
-        return Loan::create($request->all());
+        $loan = Loan::create($request->all());
+
+        dispatch(new LoanCreated($loan));
+    
+        return response()->json($loan, 201);
     }
 
     public function show(Loan $loan)
