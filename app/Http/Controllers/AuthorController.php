@@ -50,4 +50,10 @@ class AuthorController extends Controller
 
         return $author;
     }
+    public function destroy(Author $author)
+    {
+        $author->delete();
+
+        return response()->json(null, 204);
+    }
 }
