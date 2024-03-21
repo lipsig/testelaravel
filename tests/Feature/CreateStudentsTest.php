@@ -12,7 +12,7 @@ class CreateStudentsTest extends TestCase
     {
         $studentData = Student::factory()->make()->toArray();
 
-        $response = $this->post('/students', $studentData);
+        $response = $this->post('/api/students', $studentData);
 
         $response->assertStatus(201);
         $this->assertDatabaseHas('students', $studentData);
