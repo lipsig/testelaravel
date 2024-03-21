@@ -11,7 +11,7 @@ class RegisterUserTest extends TestCase
     public function test_register_user()
     {
         $userData = User::factory()->make()->toArray();
-        $userData['password'] = 'password'; // Set the password to match the one in the factory
+        $userData['password'] = 'Test1234!'; 
 
         $response = $this->post('/register', $userData);
 
