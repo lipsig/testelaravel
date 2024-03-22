@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AuthorController extends Controller
 {
@@ -20,10 +21,14 @@ class AuthorController extends Controller
             'date_of_birth.date' => 'The date of birth is not a valid date.',
         ];
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'date_of_birth' => 'required|date',
         ], $messages);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
 
         return Author::create($request->all());
     }
@@ -41,15 +46,20 @@ class AuthorController extends Controller
             'date_of_birth.date' => 'The date of birth is not a valid date.',
         ];
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'date_of_birth' => 'required|date',
         ], $messages);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
 
         $author->update($request->all());
 
         return $author;
     }
+
     public function destroy(Author $author)
     {
         $author->delete();
