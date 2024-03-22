@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class LoanTest extends TestCase
 {
+    use WithFaker; // Use the WithFaker trait
     /**
      * Test loan creation.
      *
