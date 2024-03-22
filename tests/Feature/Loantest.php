@@ -57,7 +57,7 @@ class LoanTest extends TestCase
             'Authorization' => 'Bearer ' . $token,
         ])->postJson('/api/students', [
             'name' => 'Test Student',
-            'email' => 'Testemail@library.com'
+            'email' => $this->faker->unique()->safeEmail,
             // other student fields here
         ]);
 
