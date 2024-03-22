@@ -1,0 +1,746 @@
+{
+  "info": {
+    "_postman_id": "unique_identifier",
+    "name": "Library API",
+    "description": "CRUD operations for Books, Authors, and Students",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "Get All Books",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/books",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "books"
+              ]
+            },
+            "description": "Retrieve all books from the API"
+          },
+          "response": []
+        },
+        {
+          "name": "Get a Single Book",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "cc"
+              }
+            ],
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/books/<Book ID>",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "books",
+                "<Book ID>"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create a Book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "title": "<Book Title>",
+                "publication_year": "<Publication Year>",
+                "authors": ["<Author ID 1>", "<Author ID 2>", "..."]
+              }
+            },
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/books",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "books"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update a Book",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "title": "<Book Title>",
+                "publication_year": "<Publication Year>",
+                "authors": ["<Author ID 1>", "<Author ID 2>", "..."]
+              }
+            },
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/books/<Book ID>",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "books",
+                "<Book ID>"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete a Book",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/books/<Book ID>",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "books",
+                "<Book ID>"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+     "name": "Authors",
+      "item":[
+        {
+          "name": "Get All Authors",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/authors",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "authors"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get a Single Author",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/authors/<Author ID>",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "authors",
+                "<Author ID>"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create an Author",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "name": "<Author Name>",
+                "date_of_birth": "<Date of Birth>"
+              }
+            },
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/authors",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "authors"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update an Author",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "name": "<Author Name>",
+                "date_of_birth": "<Date of Birth>"
+              }
+            },
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/authors/<Author ID>",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "authors",
+                "<Author ID>"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete an Author",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/authors/<Author ID>",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "authors",
+                "<Author ID>"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Students",
+      "item": [
+        {
+          "name": "Get All Students",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/students",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "students"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get a Single Student",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/students/<Student ID>",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "students",
+                "<Student ID>"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create a Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "name": "<Student Name>",
+                "email": "<Student Email>"
+              }
+            },
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/students",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "students"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update a Student",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "name": "<Student Name>",
+                "email": "<Student Email>"
+              }
+            },
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/students/<Student ID>",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "students",
+                "<Student ID>"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete a Student",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/students/<Student ID>",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "students",
+                "<Student ID>"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Loans",
+      "item": [
+        {
+          "name": "Get All Loans",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/loans",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "loans"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get a Single Loan",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/loans/<Loan ID>",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "loans",
+                "<Loan ID>"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create a Loan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "student_id": "<Student ID>",
+                "book_id": "<Book ID>",
+                "loan_date": "<Loan Date>",
+                "return_date": "<Return Date>"
+              }
+            },
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/loans",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "loans"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update a Loan",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "student_id": "<Student ID>",
+                "book_id": "<Book ID>",
+                "loan_date": "<Loan Date>",
+                "return_date": "<Return Date>"
+              }
+            },
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/loans/<Loan ID>",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "loans",
+                "<Loan ID>"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete a Loan",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <jwt>"
+              }
+            ],
+            "url": {
+              "raw": "https://www.teste.laravelsenior.newstories.com.br/api/loans/<Loan ID>",
+              "protocol": "https",
+              "host": [
+                "www",
+                "teste",
+                "laravelsenior",
+                "newstories",
+                "com",
+                "br"
+              ],
+              "path": [
+                "api",
+                "loans",
+                "<Loan ID>"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
