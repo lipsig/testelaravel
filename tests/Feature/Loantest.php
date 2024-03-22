@@ -30,6 +30,7 @@ class LoanTest extends TestCase
             'Authorization' => 'Bearer ' . $token,
         ])->postJson('/api/authors', [
             'name' => 'Test Author',
+            'date_of_birth' => '1990-01-01'
             // other author fields here
         ]);
 
@@ -41,8 +42,9 @@ class LoanTest extends TestCase
         $response = $this->withHeaders([
             'Authorization' => 'Bearer ' . $token,
         ])->postJson('/api/books', [
-            'title' => 'Test Book',
-            'author_id' => $authorId,
+            'title' => 'Test book',
+            'publication_year' => '2012',
+            'authors' => [$authorId],
             // other book fields here
         ]);
 
@@ -55,6 +57,7 @@ class LoanTest extends TestCase
             'Authorization' => 'Bearer ' . $token,
         ])->postJson('/api/students', [
             'name' => 'Test Student',
+            'email' => 'Testemail@library.com'
             // other student fields here
         ]);
 
@@ -68,6 +71,8 @@ class LoanTest extends TestCase
         ])->postJson('/api/loans', [
             'book_id' => $bookId,
             'student_id' => $studentId,
+            'loan_date' => '2021-01-01',
+            'return_date' => '2021-01-15'
             // other loan fields here
         ]);
 
