@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class Loancreated extends Mailable
+class LoanCreated extends Mailable
 {
     use Queueable, SerializesModels;
 
