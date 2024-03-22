@@ -42,7 +42,14 @@ class LoanController extends Controller
 
         $loan = Loan::create($request->all());
 
-        dispatch(new LoanCreated($loan));
+        // Get the student by the provided ID
+        $student = Student::find($request->student_id);
+
+        // Get the student's email
+        $studentEmail = $student->email;
+
+        // Send the LoanCreated mailable to the student's email
+        Mail::to($studentEmail)->queue(new LoanCreated($loan));
     
         return response()->json($loan, 201);
     }
