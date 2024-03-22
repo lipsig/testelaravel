@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Mail; 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Mail\LoanCreated;
 use App\Models\Loan;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Student;
+
 
 class LoanController extends Controller
 {
