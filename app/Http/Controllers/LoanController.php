@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Mail; 
 use Illuminate\Http\Request;
 use App\Mail\LoanCreated;
 use App\Models\Loan;
-
-
+use Illuminate\Support\Facades\Validator;
 
 class LoanController extends Controller
 {
@@ -29,12 +29,16 @@ class LoanController extends Controller
             'return_date.after_or_equal' => 'The return date must be a date after or equal to the loan date.',
         ];
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'student_id' => 'required|exists:students,id',
             'book_id' => 'required|exists:books,id',
             'loan_date' => 'required|date',
             'return_date' => 'required|date|after_or_equal:loan_date',
         ], $messages);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
 
         $loan = Loan::create($request->all());
 
@@ -62,12 +66,16 @@ class LoanController extends Controller
             'return_date.after_or_equal' => 'The return date must be a date after or equal to the loan date.',
         ];
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'student_id' => 'required|exists:students,id',
             'book_id' => 'required|exists:books,id',
             'loan_date' => 'required|date',
             'return_date' => 'required|date|after_or_equal:loan_date',
         ], $messages);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
 
         $loan->update($request->all());
 

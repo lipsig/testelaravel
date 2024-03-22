@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
 {
@@ -21,10 +22,14 @@ class StudentController extends Controller
             'email.unique' => 'The email has already been taken.',
         ];
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:students',
         ], $messages);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
 
         return Student::create($request->all());
     }
@@ -43,10 +48,14 @@ class StudentController extends Controller
             'email.unique' => 'The email has already been taken.',
         ];
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:students,email,' . $student->id,
         ], $messages);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
 
         $student->update($request->all());
 

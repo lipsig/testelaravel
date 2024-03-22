@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
 {
@@ -23,12 +24,16 @@ class BookController extends Controller
             'authors.*.exists' => 'One or more authors do not exist.',
         ];
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'title' => 'required',
             'publication_year' => 'required|date_format:Y',
             'authors' => 'required|array',
             'authors.*' => 'exists:authors,id',
         ], $messages);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
 
         $book = Book::create($request->only('title', 'publication_year'));
 
@@ -53,12 +58,16 @@ class BookController extends Controller
             'authors.*.exists' => 'One or more authors do not exist.',
         ];
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'title' => 'required',
             'publication_year' => 'required|date_format:Y',
             'authors' => 'required|array',
             'authors.*' => 'exists:authors,id',
         ], $messages);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
 
         $book->update($request->only('title', 'publication_year'));
 
